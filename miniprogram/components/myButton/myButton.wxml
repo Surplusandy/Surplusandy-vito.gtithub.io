@@ -1,0 +1,3 @@
+<!--components/myButton/myButton.wxml-->
+
+<button class="submitBtn">{{ text }}</button>

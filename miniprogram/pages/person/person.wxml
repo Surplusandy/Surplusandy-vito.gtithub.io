@@ -1,0 +1,106 @@
+<!--pages/person/person.wxml-->
+<view class="info" bindtap="updateInfo">
+    <image class="avatar" src="{{ hasUserInfo ? userInfo.avatarUrl : '../../images/person.png' }}"></image>
+    <block wx:if="{{ !hasUserInfo }}">
+        <button  wx:if="{{ canIUseGetUserProfile }}" bindtap="getUserProfile">点我授权</button>
+        <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">点我授权</button>
+    </block>
+    <view class="name" wx:if="{{ hasUserInfo }}">
+        <text>{{ userInfo.nickName }}</text>
+        <text>{{ userInfo.gender === 0 ? '女' : '男' }}</text>
+    </view>
+  <image class="into" src="../../images/dayu.png" wx:if="{{ hasUserInfo }}"></image>
+</view>
+
+<view class="cell">
+  <view class="cellLeft">
+     <image src="../../images/jiedan.png"></image>
+     <text>申请接单</text>
+  </view>
+  <text class="cellRight" bindtap="applyOrder">></text>
+</view>
+
+<view class="cell mt" bindtap="orderReceiver" wx:if="{{ admin }}">
+    <view class="cellLeft">
+        <image src="../../images/check.png"></image>
+        <text>审核接单申请</text>
+    </view>
+    <text class="cellRight">></text>
+</view>
+
+
+<view class="cell1">
+<view class="cell">
+  <view class="cellLeft">
+     <image  src="../../images/qianbao.png"></image>
+     <text>钱包</text>
+  </view>
+  <text class="cellRight">></text>
+</view>
+</view>
+
+<view class="cell1">
+<view class="cell">
+  <view class="cellLeft">
+     <image  src="../../images/myself.png"></image>
+     <text>个人主页</text>
+  </view>
+  <text class="cellRight">></text>
+</view>
+</view>
+
+<view class="cell1">
+<view class="cell">
+  <view class="cellLeft">
+     <image  src="../../images/hudong.png"></image>
+     <text>互动消息</text>
+  </view>
+  <text class="cellRight">></text>
+</view>
+</view>
+
+<view class="tips">
+     问题请点击微信客服复制到微信添加好友说明
+</view>
+
+<view class="kefu">
+<view class="cell">
+  <view class="cellLeft">
+     <image  src="../../images/weixin.png"></image>
+     <text>微信客服</text>
+  </view>
+  <text class="cellRight" bindtap="getWXCustomer">></text>
+</view>
+</view>
+
+<view class="cell1">
+<view class="cell">
+  <view class="cellLeft">
+     <image  src="../../images/kefu.png"></image>
+     <text>官方客服</text>
+  </view>
+  <text class="cellRight">></text>
+</view>
+</view>
+
+<view class="cell2">
+<view class="cell">
+  <view class="cellLeft" bindtap="toAbout">
+     <image  src="../../images/about.png"></image>
+     <text>关于我们</text>
+  </view>
+  <text class="cellRight">></text>
+</view>
+</view>
+
+<view class="cell1">
+<view class="cell">
+  <view class="cellLeft">
+     <image  src="../../images/message.png"></image>
+     <text>投诉建议</text>
+  </view>
+  <text class="cellRight">></text>
+</view>
+</view>
+
+<view class="version">当前版本：1.0.0</view>

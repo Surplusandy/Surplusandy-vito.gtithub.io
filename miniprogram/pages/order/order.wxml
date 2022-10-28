@@ -1,0 +1,253 @@
+<scroll-view scroll-x class="scroll_view">
+    <view class="tab">
+        <view class="tab_item {{ tabNow === index ? 'select' : '' }}" wx:for="{{ tabList }}" data-id="{{ index }}" wx:key="index" bindtap="selectTab">
+            {{ item }}
+        </view>
+    </view>
+</scroll-view>
+
+<view class="star" wx:if="{{ showStar }}">
+    <text>请为本次订单服务评分</text>
+    <view class="starList">
+        <image wx:for="{{ starList }}" src="{{ item }}" bindtap="selectStar" data-index="{{ index }}"></image>
+    </view>
+    <button size="mini" class="starBtn" bindtap="submitStar">确定</button>
+</view>
+
+<view wx:if="{{ tabNow === 0 }}" class="body">
+    <view class="tips">
+        向上拖动更新信息~~~
+    </view>
+    <view class="order" wx:for="{{ orderList }}" wx:key="index">
+        <view class="order_top">
+            <view class="top_left">
+                <image src="{{ item.userInfo.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.name }}</text>
+                    <text>{{ item.time }}</text>
+                </view>
+            </view>
+            <view class="{{ item.stateColor }}">
+                {{ item.state }}
+            </view>
+        </view>
+        <view class="order_content">
+            <view class="content">
+                {{ item.info }}
+            </view>
+            <view class="address">
+                {{ item.state === '待帮助' ? '目的地：' + item.address : '订单已完成，相关信息已隐藏' }}
+            </view>
+            <view class="address" bindtap="callPhone" data-phone="{{ item.phone }}">
+                {{ item.state === '待帮助' ? '联系方式：' + item.phone : '' }}
+            </view>
+        </view>
+        <view class="order_bottom">
+            <view class="money">
+                金额 ￥{{ item.money }}
+            </view>
+            <view class="accept" wx:if="{{ item.state === '待帮助' }}" bindtap="orderReceive" data-item="{{ item }}">
+                接单
+            </view>
+            <view class="starNum" wx:if="{{ item.state === '已完成' }}">
+                评分: {{ item.starNum }} 星
+            </view>
+        </view>
+        <view class="comment">
+            <input type="text" value="{{ comment }}" placeholder="请输入评论" data-id="{{ item._id }}" bindconfirm="getComment" />
+        </view>
+        <text class="seeComment" bindtap="showComment" wx:if="{{ !showComment }}">查看评论</text>
+        <text class="seeComment" bindtap="showComment" wx:else>隐藏评论</text>
+
+        <view class="commentList" wx:if="{{ showComment }}">
+            <view class="commentItem" wx:for="{{ item.commentList }}">
+                <image src="{{ item.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.nickName }}</text>
+                    <text>{{ item.comment }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view wx:if="{{ tabNow === 1 }}" class="body">
+    <view class="tips">
+        向上拖动更新信息~~~
+    </view>
+    <view class="order" wx:for="{{ myOrder }}" wx:key="index">
+        <view class="order_top">
+            <view class="top_left">
+                <image src="{{ item.userInfo.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.name }}</text>
+                    <text>{{ item.time }}</text>
+                </view>
+            </view>
+            <view class="{{ item.stateColor }}">
+                {{ item.state }}
+            </view>
+        </view>
+        <view class="order_content">
+            <view class="content">
+                {{ item.info }}
+            </view>
+            <view class="address">
+                {{ item.state === '待帮助' ? '目的地：' + item.address : '订单已完成，相关信息已隐藏' }}
+            </view>
+            <view class="address" bindtap="callPhone" data-phone="{{ item.phone }}">
+                {{ item.state === '待帮助' ? '联系方式：' + item.phone : '' }}
+            </view>
+        </view>
+        <view class="order_bottom">
+            <view class="money">
+                金额 ￥{{ item.money }}
+            </view>
+            <view class="accept" wx:if="{{ item.state === '已帮助' }}" bindtap="toFinish" data-item="{{ item }}">
+                已完成
+            </view>
+            <view class="starNum" wx:if="{{ item.state === '已完成' }}">
+                评分: {{ item.starNum }} 星
+            </view>
+        </view>
+
+        <view class="comment">
+            <input type="text" value="{{ comment }}" placeholder="请输入评论" data-id="{{ item._id }}" bindconfirm="getComment" />
+        </view>
+        <text class="seeComment" bindtap="showComment" wx:if="{{ !showComment }}">查看评论</text>
+        <text class="seeComment" bindtap="showComment" wx:else>隐藏评论</text>
+
+        <view class="commentList" wx:if="{{ showComment }}">
+            <view class="commentItem" wx:for="{{ item.commentList }}">
+                <image src="{{ item.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.nickName }}</text>
+                    <text>{{ item.comment }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view wx:if="{{ tabNow === 2 }}" class="body">
+    <view class="tips">
+        向上拖动更新信息~~~
+    </view>
+    <view class="helpOrderInfo">
+        <view class="orderNum">
+            <text>{{ helpTotalNum }}单</text>
+            <text>已完成</text>
+        </view>
+        <view class="orderMoney">
+            <text>{{ helpTotalMoeny }}元</text>
+            <text>总收益</text>
+        </view>
+    </view>
+    <view class="order" wx:for="{{ helpOrder }}" wx:key="index">
+        <view class="order_top">
+            <view class="top_left">
+                <image src="{{ item.userInfo.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.name }}</text>
+                    <text>{{ item.time }}</text>
+                </view>
+            </view>
+            <view class="{{ item.stateColor }}">
+                {{ item.state }}
+            </view>
+        </view>
+        <view class="order_content">
+            <view class="content">
+                {{ item.info }}
+            </view>
+            <view class="address">
+                {{ item.state === '待帮助' ? '目的地：' + item.address : '订单已完成，相关信息已隐藏' }}
+            </view>
+            <view class="address" bindtap="callPhone" data-phone="{{ item.phone }}">
+                {{ item.state === '待帮助' ? '联系方式：' + item.phone : '' }}
+            </view>
+        </view>
+        <view class="order_bottom">
+            <view class="money">
+                金额 ￥{{ item.money }}
+            </view>
+            <view class="starNum" wx:if="{{ item.state === '已完成' }}">
+                评分: {{ item.starNum }} 星
+            </view>
+        </view>
+
+        <view class="comment">
+            <input type="text" value="{{ comment }}" placeholder="请输入评论" data-id="{{ item._id }}" bindconfirm="getComment" />
+        </view>
+        <text class="seeComment" bindtap="showComment" wx:if="{{ !showComment }}">查看评论</text>
+        <text class="seeComment" bindtap="showComment" wx:else>隐藏评论</text>
+
+        <view class="commentList" wx:if="{{ showComment }}">
+            <view class="commentItem" wx:for="{{ item.commentList }}">
+                <image src="{{ item.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.nickName }}</text>
+                    <text>{{ item.comment }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view wx:if="{{ tabNow === 3 }}" class="body">
+    <view class="tips">
+        向上拖动更新信息~~~
+    </view>
+    <view class="order" wx:for="{{ rewardOrder }}" wx:key="index">
+        <view class="order_top">
+            <view class="top_left">
+                <image src="{{ item.userInfo.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.name }}</text>
+                    <text>{{ item.time }}</text>
+                </view>
+            </view>
+            <view class="{{ item.stateColor }}">
+                {{ item.state }}
+            </view>
+        </view>
+        <view class="order_content">
+            <view class="content">
+                {{ item.info }}
+            </view>
+            <view class="address">
+                {{ item.state === '待帮助' ? '目的地：' + item.address : '订单已完成，相关信息已隐藏' }}
+            </view>
+            <view class="address" bindtap="callPhone" data-phone="{{ item.phone }}">
+                {{ item.state === '待帮助' ? '联系方式：' + item.phone : '' }}
+            </view>
+        </view>
+        <view class="order_bottom">
+            <view class="money">
+                金额 ￥{{ item.money }}
+            </view>
+            <view class="accept" wx:if="{{ item.state === '待帮助' }}" bindtap="orderReceive" data-item="{{ item }}">
+                接单
+            </view>
+            <view class="starNum" wx:if="{{ item.state === '已完成' }}">
+                评分: {{ item.starNum }} 星
+            </view>
+        </view>
+
+        <view class="comment">
+            <input type="text" value="{{ comment }}" placeholder="请输入评论" data-id="{{ item._id }}" bindconfirm="getComment" />
+        </view>
+        <text class="seeComment" bindtap="showComment" wx:if="{{ !showComment }}">查看评论</text>
+        <text class="seeComment" bindtap="showComment" wx:else>隐藏评论</text>
+
+        <view class="commentList" wx:if="{{ showComment }}">
+            <view class="commentItem" wx:for="{{ item.commentList }}">
+                <image src="{{ item.avatarUrl }}"></image>
+                <view class="name">
+                    <text>{{ item.nickName }}</text>
+                    <text>{{ item.comment }}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

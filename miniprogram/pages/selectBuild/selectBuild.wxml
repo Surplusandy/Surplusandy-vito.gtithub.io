@@ -1,0 +1,54 @@
+<!--pages/selectBuild/selectBuild.wxml-->
+<scroll-view scroll-x  class="scroll_view">
+   <view class="tab">
+       <view class="tab_item {{ tabNow === index ? 'select' : ''}} "
+       data-id="{{ index }}"
+       wx:for="{{tabList}}" wx:key="index" 
+       bindtap="selectTab"
+       data-id="{{index}}">
+       {{item}}
+       </view>
+   </view>
+</scroll-view>
+
+<view wx:if="{{tabNow===0}}" class="body">
+   <view class="item" wx:for="{{16}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">
+     {{index+1}}栋
+   </view>
+</view>
+
+<view wx:if="{{tabNow ===1}}" class="body">
+   <view class="item" wx:for="{{eare}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===2}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===3}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===4}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===5}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===6}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===7}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+
+<view wx:if="{{tabNow ===8}}" class="body">
+  <view class="item" wx:for="{{louceng}}" bindtap="selectBuild" data-index="{{ index }}" wx:key="index">{{item}}</view>
+</view>
+<view class="showAll">已显示全部</view>
+
+
+

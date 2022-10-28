@@ -1,0 +1,1 @@
+"D:\软件\微信小程序开发工具\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-1giih0qj15111072 --n quickstartFunctions --r --project "D:\工作空间\weixin.work\03-wx" --report_first --report

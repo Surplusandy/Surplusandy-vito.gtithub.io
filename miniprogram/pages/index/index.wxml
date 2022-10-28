@@ -1,0 +1,27 @@
+<!--index.wxml-->
+<view class="banner">
+<swiper 
+    indicator-dots="true" 
+    autoplay="true"
+    class="banner_body"
+>
+<swiper-item wx:for="{{banner}}" wx:key="index" class="banner_item">
+<image src="{{item}}" mode="widthFix"></image>
+</swiper-item>
+</swiper>
+</view>
+<view class="p">
+<text>服务分类</text>
+</view>
+
+<view class="container">
+  <view class="body" wx:for="{{indexConfig}}" wx:key="index" 
+  data-url="{{item.url}}" 
+  bindtap="toDetail">
+    <view class="icon">
+      <image src="{{item.icon}}"></image>
+    </view>
+    <text class="text">{{item.text}}</text>
+  </view>
+</view>
+

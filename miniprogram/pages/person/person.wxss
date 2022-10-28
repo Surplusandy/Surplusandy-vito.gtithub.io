@@ -1,0 +1,91 @@
+/* pages/person/person.wxss */
+.info{
+  height: 150rpx;
+  width: 80%;
+  background-color: lightblue;
+  display: flex;
+  border-radius: 10rpx;
+  margin: 0 auto;
+  padding: 50rpx 40rpx;
+  align-items: center;
+}
+.info .avatar{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.info .name{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-left: 40rpx;
+  font-size: 12px;
+}
+.info .into{
+  width: 50rpx;
+  height: 50rpx;
+  margin-left: auto;
+}
+.info .name text:nth-child(1){
+  font-size: 14px;
+}
+.info .name text:nth-child(2){
+  margin-top: 10px;
+}
+
+.cell{
+  display: flex;
+  width: 80%;
+  background-color: white;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 40rpx;
+  margin-top: 20rpx;
+}
+
+.cell .cellLeft{
+  display: flex;
+  align-items: center;
+}
+
+.cell .cellLeft image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.cell .cellLeft  text{
+  margin-left: 30rpx;
+  font-size: 14px;
+}
+.cell .cellRight{
+  color: #c1c1c1;
+}
+.tips{
+  background-color: lightblue;
+  width: 80%;
+  margin: 0 auto;
+  padding: 20rpx 40rpx;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 30rpx;
+}
+
+.kefu .cell{
+  margin-top: 0;
+}
+
+.cell1 .cell{
+  margin-top: 5rpx;
+}
+
+.cell2 .cell{
+  margin-top: 30rpx;
+}
+
+.version{
+  color: #a1a1a1;
+  width: 100%;
+  text-align: center;
+  margin-top: 25rpx;
+  font-size: 14px;
+}
